@@ -153,12 +153,6 @@ class Fused_Gromov_Loss(nn.Module):
 class UFG_OT_Loss(nn.Module):
     def __init__(self):
         super(UFG_OT_Loss, self).__init__()
-        
-    def get_logits(self, image_features, text_features):
-        logits_per_image = image_features @ text_features.T
-        logits_per_text = text_features @ image_features.T
-        
-        return logits_per_image, logits_per_text
 
     def ufg_ot(self, image_features, text_features, a0=0.01, a1=0.01, a2=0.01, a3=0.01, tau=0.01, num=4, inner=4, eps=1e-5):
         """
@@ -210,7 +204,6 @@ class UFG_OT_Loss(nn.Module):
         return t
     
     def forward(self, all_image_features, all_text_features, labels):
-        logits_per_image, logits_per_text = self.get_logits(all_image_features, all_text_features)
-        loss = F.cross_entropy(self.ufg_ot(logits_per_image, logits_per_text), labels)
+        loss = F.cross_entropy(self.ufg_ot(all_image_features, all_text_features), labels)
         
         return {"ufg_ot_loss": loss}
