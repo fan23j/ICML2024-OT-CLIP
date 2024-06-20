@@ -68,7 +68,7 @@ class DBOT_Sinkhorn_Loss(nn.Module):
         n: number of iterations
         """
         bs = M.shape[0]
-        device = P.device
+        device = M.device
 
         # initialize source distribution as uniform
         a = torch.ones((bs,)).to(device)
