@@ -1,6 +1,6 @@
 # ICML2024-OT-CLIP
 
-Official Repository for ICML'24 "OT-CLIP: Understanding and Generalizing CLIP via Optimal Transport". [[paper](URL)]
+Official Repository for ICML'24 "OT-CLIP: Understanding and Generalizing CLIP via Optimal Transport". [[paper](https://openreview.net/pdf?id=X8uQ1TslUc)]
 
 ## OT-CLIP Overview
 
